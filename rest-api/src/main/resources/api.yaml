@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Hexa API
+  description: Exemple d'une API pizza simple sur architecture hexagonale.
+tags:
+  - name: hexa
+paths:
+  /pizzas:
+    get:
+      operationId: getPizzas
+      description: Récupère la liste des pizzas
+      tags:
+        - pizza
+      responses:
+        '200':
+          description: Succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pizzaDTO'
+    post:
+      operationId: createPizza
+      description: Crée une nouvelle pizza
+      tags:
+        - pizza
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzaDTO'
+      responses:
+        '200':
+          description: Succès
+        '400':
+          description: Requête invalide
+  /pizzas/{pizzaId}:
+    get:
+      operationId: getPizza
+      description: Récupère une pizza par son identifiant
+      parameters:
+        - $ref: '#/components/parameters/pizzaId'
+      tags:
+        - pizza
+      responses:
+        '200':
+          description: Succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pizzaDTO'
+        '404':
+          description: Pizza introuvable
+    put:
+      operationId: updatePizza
+      description: Met à jour une pizza
+      parameters:
+        - $ref: '#/components/parameters/pizzaId'
+      tags:
+        - pizza
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzaDTO'
+      responses:
+        '200':
+          description: Succès
+        '400':
+          description: Requête invalide
+    delete:
+      operationId: deletePizza
+      description: Supprime la pizza identifiée
+      parameters:
+        - $ref: '#/components/parameters/pizzaId'
+      tags:
+        - pizza
+      responses:
+        '200':
+          description: Succès
+        '404':
+          description: Pizza introuvable
+components:
+  schemas:
+    pizzaDTO:
+      type: object
+      required:
+        - id
+        - prix
+        - taille
+        - ingredients
+      properties:
+        id:
+          type: integer
+        prix:
+          type: number
+        taille:
+          type: string
+          enum:
+            - ENFANT
+            - MEDIUM
+            - LARGE
+            - TRES_GROS_MANGEUR
+  parameters:
+    pizzaId:
+      name: pizzaId
+      in: path
+      description: ID of a pizza
+      required: true
+      schema:
+        type: long
