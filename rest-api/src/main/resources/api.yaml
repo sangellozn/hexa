@@ -10,6 +10,19 @@ paths:
     get:
       operationId: getPizzas
       description: Récupère la liste des pizzas
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 0
+          required: false
+        - in: query
+          name: size
+          schema:
+            type: integer
+            default: 20
+          required: false
       tags:
         - pizza
       responses:
@@ -103,6 +116,23 @@ components:
             - MEDIUM
             - LARGE
             - TRES_GROS_MANGEUR
+        ingredients:
+          type: array
+          items:
+            $ref: "#/components/schemas/ingredientDTO"
+    ingredientDTO:
+      type: object
+      required:
+        - id
+        - prix
+        - nom
+      properties:
+        id:
+          type: integer
+        prix:
+          type: number
+        nom:
+          type: string
   parameters:
     pizzaId:
       name: pizzaId

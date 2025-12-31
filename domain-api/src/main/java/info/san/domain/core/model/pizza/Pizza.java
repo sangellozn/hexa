@@ -1,19 +1,25 @@
 package info.san.domain.core.model.pizza;
 
 import info.san.domain.core.exceptions.PizzaDejaCuiteException;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
 @Getter
+@Setter
 public class Pizza {
+
+    private Long id;
 
     private final Collection<Ingredient> ingredients;
 
     private boolean isCalzone;
 
+    @Setter(AccessLevel.NONE)
     private boolean isCuite;
 
     public Pizza() {
