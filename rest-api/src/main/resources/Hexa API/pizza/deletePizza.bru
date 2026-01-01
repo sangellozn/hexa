@@ -1,0 +1,71 @@
+meta {
+  name: deletePizza
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/pizzas/:pizzaId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  pizzaId: 
+}
+
+example {
+  name: 200 Response
+  description: Succès
+  
+  request: {
+    url: {{baseUrl}}/pizzas/:pizzaId
+    method: DELETE
+    mode: none
+    params:path: {
+      pizzaId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Pizza introuvable
+  
+  request: {
+    url: {{baseUrl}}/pizzas/:pizzaId
+    method: DELETE
+    mode: none
+    params:path: {
+      pizzaId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

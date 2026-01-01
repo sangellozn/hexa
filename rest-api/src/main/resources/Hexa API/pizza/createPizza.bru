@@ -1,0 +1,92 @@
+meta {
+  name: createPizza
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/pizzas
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "taille": "",
+    "ingredients": [
+      {
+        "ids": []
+      }
+    ]
+  }
+}
+
+example {
+  name: 200 Response
+  description: Succès
+  
+  request: {
+    url: {{baseUrl}}/pizzas
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "taille": "",
+        "ingredients": [
+          {
+            "ids": []
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response
+  description: Requête invalide
+  
+  request: {
+    url: {{baseUrl}}/pizzas
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "taille": "",
+        "ingredients": [
+          {
+            "ids": []
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

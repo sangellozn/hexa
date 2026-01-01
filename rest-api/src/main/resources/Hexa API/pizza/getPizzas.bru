@@ -1,0 +1,49 @@
+meta {
+  name: getPizzas
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/pizzas
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~page: 
+  ~size: 
+}
+
+example {
+  name: 200 Response
+  description: Succès
+  
+  request: {
+    url: {{baseUrl}}/pizzas
+    method: GET
+    mode: none
+    params:query: {
+      ~page: 
+      ~size: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        []
+      '''
+    }
+  }
+}

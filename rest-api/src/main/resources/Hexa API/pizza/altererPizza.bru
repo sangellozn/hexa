@@ -1,0 +1,55 @@
+meta {
+  name: altererPizza
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseUrl}}/pizzas/:pizzaId
+  body: json
+  auth: inherit
+}
+
+params:path {
+  pizzaId: 
+}
+
+body:json {
+  {
+    "cuire": false
+  }
+}
+
+example {
+  name: 204 Response
+  description: Succès
+  
+  request: {
+    url: {{baseUrl}}/pizzas/:pizzaId
+    method: PATCH
+    mode: json
+    params:path: {
+      pizzaId: 
+    }
+  
+    body:json: {
+      {
+        "cuire": false
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

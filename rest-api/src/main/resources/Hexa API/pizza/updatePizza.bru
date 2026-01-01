@@ -1,0 +1,71 @@
+meta {
+  name: updatePizza
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/pizzas/:pizzaId
+  body: json
+  auth: inherit
+}
+
+params:path {
+  pizzaId: 
+}
+
+example {
+  name: 200 Response
+  description: Succès
+  
+  request: {
+    url: {{baseUrl}}/pizzas/:pizzaId
+    method: PUT
+    mode: json
+    params:path: {
+      pizzaId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response
+  description: Requête invalide
+  
+  request: {
+    url: {{baseUrl}}/pizzas/:pizzaId
+    method: PUT
+    mode: json
+    params:path: {
+      pizzaId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
