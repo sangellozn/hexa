@@ -1,7 +1,7 @@
 package info.san.hexa.rest.pizza.adaptaters;
 
-import info.san.domain.core.ports.in.IGestionPizza;
-import info.san.domain.core.ports.in.IRecuperationPizza;
+import info.san.hexa.domain.core.ports.in.IGestionPizza;
+import info.san.hexa.domain.core.ports.in.IRecuperationPizza;
 import info.san.hexa.rest.pizza.mappers.PizzaMapper;
 import info.san.rest.api.model.PizzaDTO;
 import lombok.RequiredArgsConstructor;

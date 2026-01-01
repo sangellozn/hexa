@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ingredients")
+@Table(name = "ingredient")
 @Setter
 public class IngredientEntity {
 
@@ -17,7 +17,7 @@ public class IngredientEntity {
     private BigDecimal prixUnitaire;
 
     @Id
-    @GeneratedValue(generator = "s_ingredients", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     public Long getId() {
         return id;
     }

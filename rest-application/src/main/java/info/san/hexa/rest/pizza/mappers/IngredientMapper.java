@@ -1,6 +1,6 @@
 package info.san.hexa.rest.pizza.mappers;
 
-import info.san.domain.core.model.pizza.Ingredient;
+import info.san.hexa.domain.core.model.pizza.Ingredient;
 import info.san.rest.api.model.IngredientDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
