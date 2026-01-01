@@ -12,11 +12,10 @@ import java.util.List;
 })
 public interface PizzaEntityMapper {
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "ingredients", ignore = true)
-    @Mapping(target = "taille", source = "taille")
-    @Mapping(target = "calzone", source = "calzone")
-    void mapToEntity(@MappingTarget PizzaEntity entity, Pizza pizza);
+    default void mapToEntity(PizzaEntity entity, Pizza pizza) {
+        entity.setTaille(map(pizza.getTaille()));
+        entity.setCalzone(pizza.isCalzone());
+    }
 
     Pizza mapToDomain(PizzaEntity pizza);
 
