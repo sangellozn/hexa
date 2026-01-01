@@ -18,4 +18,9 @@ public interface IngredientDtoMapper {
         return dto;
     }
 
+    default Collection<Ingredient> map(IngredientDTO value) {
+        return value.getIds().stream().map(id -> new Ingredient(Long.valueOf(id),
+                null, null)).toList();
+    }
+
 }

@@ -126,9 +126,7 @@ components:
             - LARGE
             - TRES_GROS_MANGEUR
         ingredients:
-          type: array
-          items:
-            $ref: "#/components/schemas/ingredientDTO"
+          $ref: "#/components/schemas/ingredientDTO"
     pizzaDTO:
       allOf:
         - $ref: "#/components/schemas/nouvellePizzaDTO"

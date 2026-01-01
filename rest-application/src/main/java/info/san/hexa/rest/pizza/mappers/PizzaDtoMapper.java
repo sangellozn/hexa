@@ -15,7 +15,6 @@ import java.util.List;
 public interface PizzaDtoMapper {
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "taille", ignore = true)
     @Mapping(target = "ingredients", source = "ingredients")
     PizzaDTO mapToDTO(Pizza pizza);
 
@@ -44,11 +43,11 @@ public interface PizzaDtoMapper {
     })
     Pizza.Taille map(PizzaDTO.TailleEnum taille);
 
-    /*@ValueMappings(value = {
+    @ValueMappings(value = {
             @ValueMapping(target = "LARGE", source = "GRANDE"),
             @ValueMapping(target = "MEDIUM", source = "MOYENNE"),
             @ValueMapping(target = "ENFANT", source = "PETITE"),
             @ValueMapping(target = "TRES_GROS_MANGEUR", source = "TRES_GRANDE")
     })
-    PizzaDTO.TailleEnum map(Pizza.Taille taille);*/
+    PizzaDTO.TailleEnum map(Pizza.Taille taille);
 }

@@ -28,7 +28,8 @@ public class PizzaJpaRepository implements IPizzaRepository {
 
     @Override
     public Pizza creer(Pizza pizza) {
-        PizzaEntity entity = pizzaEntityMapper.mapToEntity(pizza);
+        PizzaEntity entity = new PizzaEntity();
+        pizzaEntityMapper.mapToEntity(entity, pizza);
 
         List<IngredientEntity> ingredientEntities = ingredientEntityDao.findAllById(pizza.getIngredients()
                 .stream().map(Ingredient::id).collect(Collectors.toSet()));
@@ -56,8 +57,9 @@ public class PizzaJpaRepository implements IPizzaRepository {
     }
 
     @Override
-    public void update(Pizza pizza) {
-        PizzaEntity entity = pizzaEntityMapper.mapToEntity(pizza);
+    public void update(Long id, Pizza pizza) {
+        PizzaEntity entity = pizzaEntityDao.getReferenceById(id);
+        pizzaEntityMapper.mapToEntity(entity, pizza);
 
         entity.getIngredients().clear();
 

@@ -1,7 +1,7 @@
 package info.san.hexa.domain.core.ports.out.common;
 
-public interface OutUpdate<I> {
+public interface OutUpdate<ID, I> {
 
-    void update(I item);
+    void update(ID id, I item);
 
 }

@@ -2,10 +2,7 @@ package info.san.hexa.infrastructure.persistence.jpa.mapper.pizza;
 
 import info.san.hexa.domain.core.model.pizza.Pizza;
 import info.san.hexa.infrastructure.persistence.jpa.entities.pizza.PizzaEntity;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ValueMapping;
-import org.mapstruct.ValueMappings;
+import org.mapstruct.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,8 +12,11 @@ import java.util.List;
 })
 public interface PizzaEntityMapper {
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "ingredients", ignore = true)
-    PizzaEntity mapToEntity(Pizza pizza);
+    @Mapping(target = "taille", source = "taille")
+    @Mapping(target = "calzone", source = "calzone")
+    void mapToEntity(@MappingTarget PizzaEntity entity, Pizza pizza);
 
     Pizza mapToDomain(PizzaEntity pizza);
 

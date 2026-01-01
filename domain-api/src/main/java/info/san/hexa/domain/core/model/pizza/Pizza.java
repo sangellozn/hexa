@@ -13,7 +13,9 @@ import java.util.HashSet;
 @Setter
 public class Pizza {
 
+    @Getter
     public enum Taille {
+
         PETITE(BigDecimal.ONE),
 
         MOYENNE(BigDecimal.valueOf(1.5)),
@@ -22,7 +24,6 @@ public class Pizza {
 
         TRES_GRANDE(BigDecimal.valueOf(3));
 
-        @Getter
         private final BigDecimal multiplicateurPrix;
 
         Taille(BigDecimal multiplicateurPrix) {
