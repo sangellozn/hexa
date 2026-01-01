@@ -1,10 +1,9 @@
-package info.san.infrastructure.persistence.jpa.pizza.entities;
+package info.san.hexa.infrastructure.persistence.jpa.entities.pizza;
 
 import jakarta.persistence.*;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "pizza")
@@ -21,7 +20,7 @@ public class PizzaEntity {
         XXL
     }
 
-    private Long id;
+    private Integer id;
 
     private boolean isCalzone;
 
@@ -30,12 +29,12 @@ public class PizzaEntity {
     private List<IngredientEntity> ingredients;
 
     @Id
-    @GeneratedValue
-    public Long getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
         return id;
     }
 
-    @Column
+    @Column(name = "is_calzone")
     public boolean isCalzone() {
         return isCalzone;
     }

@@ -2,13 +2,16 @@ package info.san.hexa.rest.pizza.adaptaters;
 
 import info.san.hexa.domain.core.ports.in.IGestionPizza;
 import info.san.hexa.domain.core.ports.in.IRecuperationPizza;
-import info.san.hexa.rest.pizza.mappers.PizzaMapper;
-import info.san.rest.api.model.PizzaDTO;
+import info.san.hexa.rest.api.model.NouvellePizzaDTO;
+import info.san.hexa.rest.api.model.PizzaDTO;
+import info.san.hexa.rest.pizza.mappers.PizzaDtoMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class PizzaRestAdapter {
 
@@ -16,14 +19,14 @@ public class PizzaRestAdapter {
 
     private final IGestionPizza gestionPizza;
 
-    private final PizzaMapper pizzaMapper;
+    private final PizzaDtoMapper pizzaDtoMapper;
 
     public void updatePizza(Long id, PizzaDTO pizzaDTO) {
-        gestionPizza.update(id, pizzaMapper.mapToDomain(pizzaDTO));
+        gestionPizza.update(id, pizzaDtoMapper.mapToDomain(pizzaDTO));
     }
 
-    public Long createPizza(PizzaDTO pizzaDTO) {
-        return gestionPizza.create(pizzaMapper.mapToDomain(pizzaDTO));
+    public Long createPizza(NouvellePizzaDTO pizzaDTO) {
+        return gestionPizza.create(pizzaDtoMapper.mapToDomain(pizzaDTO));
     }
 
     public void deletePizza(Long pizzaId) {
@@ -31,11 +34,11 @@ public class PizzaRestAdapter {
     }
 
     public Optional<PizzaDTO> getPizza(Long pizzaId) {
-        return recuperationPizza.findById(pizzaId).map(pizzaMapper::mapToDTO);
+        return recuperationPizza.findById(pizzaId).map(pizzaDtoMapper::mapToDTO);
     }
 
     public List<PizzaDTO> getPizzas(int page, int size) {
-        return pizzaMapper.mapToDTO(recuperationPizza.findPage(page, size).getContenu());
+        return pizzaDtoMapper.mapToDTO(recuperationPizza.findPage(page, size).getContenu());
     }
 
 }

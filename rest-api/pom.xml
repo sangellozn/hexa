@@ -16,6 +16,17 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.46.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-community-dialects</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -32,8 +43,8 @@
                                 ${project.basedir}/src/main/resources/api.yaml
                             </inputSpec>
                             <generatorName>spring</generatorName>
-                            <apiPackage>info.san.rest.api</apiPackage>
-                            <modelPackage>info.san.rest.api.model</modelPackage>
+                            <apiPackage>info.san.hexa.rest.api</apiPackage>
+                            <modelPackage>info.san.hexa.rest.api.model</modelPackage>
                             <configOptions>
                                 <interfaceOnly>true</interfaceOnly>
                                 <useSpringBoot3>true</useSpringBoot3>

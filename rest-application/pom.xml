@@ -15,18 +15,29 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <module.version>1.0-SNAPSHOT</module.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>info.san</groupId>
             <artifactId>rest-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${module.version}</version>
         </dependency>
         <dependency>
             <groupId>info.san</groupId>
             <artifactId>domain-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.san</groupId>
+            <artifactId>domain-impl</artifactId>
+            <version>${module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.san</groupId>
+            <artifactId>infrastructure</artifactId>
+            <version>${module.version}</version>
         </dependency>
     </dependencies>
 </project>

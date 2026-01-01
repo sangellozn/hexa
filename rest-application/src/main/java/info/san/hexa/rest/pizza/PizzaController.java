@@ -1,15 +1,16 @@
 package info.san.hexa.rest.pizza;
 
+import info.san.hexa.rest.api.PizzaApi;
+import info.san.hexa.rest.api.model.NouvellePizzaDTO;
+import info.san.hexa.rest.api.model.PizzaAltereeDTO;
+import info.san.hexa.rest.api.model.PizzaDTO;
 import info.san.hexa.rest.pizza.adaptaters.PizzaRestAdapter;
-import info.san.rest.api.PizzaApi;
-import info.san.rest.api.model.PizzaDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,8 +19,8 @@ public class PizzaController implements PizzaApi {
     private final PizzaRestAdapter pizzaRestAdapter;
 
     @Override
-    public ResponseEntity<Void> createPizza(PizzaDTO pizzaDTO) {
-        Long id = pizzaRestAdapter.createPizza(pizzaDTO);
+    public ResponseEntity<Void> createPizza(NouvellePizzaDTO nouvellePizzaDTO) {
+        Long id = pizzaRestAdapter.createPizza(nouvellePizzaDTO);
         return ResponseEntity.created(URI.create("pizzas/" + id)).build();
     }
 
@@ -43,5 +44,11 @@ public class PizzaController implements PizzaApi {
     public ResponseEntity<Void> updatePizza(Long pizzaId, PizzaDTO pizzaDTO) {
         pizzaRestAdapter.updatePizza(pizzaId, pizzaDTO);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<Void> altererPizza(Long pizzaId, PizzaAltereeDTO pizzaAltereeDTO) {
+        // FIXME
+        return PizzaApi.super.altererPizza(pizzaId, pizzaAltereeDTO);
     }
 }

@@ -1,7 +1,7 @@
-package info.san.infrastructure.persistence.jpa.pizza.mapper;
+package info.san.hexa.infrastructure.persistence.jpa.mapper.pizza;
 
 import info.san.hexa.domain.core.model.pizza.Pizza;
-import info.san.infrastructure.persistence.jpa.pizza.entities.PizzaEntity;
+import info.san.hexa.infrastructure.persistence.jpa.entities.pizza.PizzaEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ValueMapping;
@@ -11,9 +11,9 @@ import java.util.Collection;
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {
-        IngredientMapper.class
+        IngredientEntityMapper.class
 })
-public interface PizzaMapper {
+public interface PizzaEntityMapper {
 
     @Mapping(target = "ingredients", ignore = true)
     PizzaEntity mapToEntity(Pizza pizza);

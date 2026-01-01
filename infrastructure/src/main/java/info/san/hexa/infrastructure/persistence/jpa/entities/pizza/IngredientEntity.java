@@ -1,4 +1,4 @@
-package info.san.infrastructure.persistence.jpa.pizza.entities;
+package info.san.hexa.infrastructure.persistence.jpa.entities.pizza;
 
 import jakarta.persistence.*;
 import lombok.Setter;
@@ -10,15 +10,15 @@ import java.math.BigDecimal;
 @Setter
 public class IngredientEntity {
 
-    private Long id;
+    private Integer id;
 
     private String nom;
 
     private BigDecimal prixUnitaire;
 
     @Id
-    @GeneratedValue
-    public Long getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
         return id;
     }
 

@@ -43,7 +43,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/pizzaDTO'
+              $ref: '#/components/schemas/nouvellePizzaDTO'
       responses:
         '200':
           description: Succès
@@ -95,20 +95,29 @@ paths:
           description: Succès
         '404':
           description: Pizza introuvable
+    patch:
+      operationId: altererPizza
+      description: Modifie la pizza sur certains aspects (cuisson, ...)
+      parameters:
+        - $ref: '#/components/parameters/pizzaId'
+      tags:
+        - pizza
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzaAltereeDTO'
+      responses:
+        '204':
+          description: Succès
 components:
   schemas:
-    pizzaDTO:
+    nouvellePizzaDTO:
       type: object
       required:
-        - id
-        - prix
         - taille
         - ingredients
       properties:
-        id:
-          type: integer
-        prix:
-          type: number
         taille:
           type: string
           enum:
@@ -120,19 +129,29 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ingredientDTO"
+    pizzaDTO:
+      allOf:
+        - $ref: "#/components/schemas/nouvellePizzaDTO"
+        - type: object
+          properties:
+            id:
+              type: integer
+    pizzaAltereeDTO:
+      type: object
+      required:
+        - cuire
+      properties:
+        cuire:
+          type: boolean
     ingredientDTO:
       type: object
       required:
-        - id
-        - prix
-        - nom
+        - ids
       properties:
-        id:
-          type: integer
-        prix:
-          type: number
-        nom:
-          type: string
+        ids:
+          type: array
+          items:
+            type: integer
   parameters:
     pizzaId:
       name: pizzaId
