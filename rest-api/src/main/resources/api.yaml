@@ -77,7 +77,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/pizzaDTO'
+              $ref: '#/components/schemas/pizzaModifieeDTO'
       responses:
         '200':
           description: Succès
@@ -127,13 +127,34 @@ components:
             - TRES_GROS_MANGEUR
         ingredients:
           $ref: "#/components/schemas/ingredientDTO"
-    pizzaDTO:
+    pizzaModifieeDTO:
       allOf:
         - $ref: "#/components/schemas/nouvellePizzaDTO"
         - type: object
+          required:
+            - id
           properties:
             id:
               type: integer
+    pizzaDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_calzone:
+          type: boolean
+          default: false
+        prix:
+          type: number
+        ingredients:
+          $ref: "#/components/schemas/ingredientCompletDTO"
+        taille:
+          type: string
+          enum:
+            - ENFANT
+            - MEDIUM
+            - LARGE
+            - TRES_GROS_MANGEUR
     pizzaAltereeDTO:
       type: object
       required:
@@ -150,6 +171,17 @@ components:
           type: array
           items:
             type: integer
+    ingredientCompletDTO:
+      type: array
+      items:
+        type: objet
+        properties:
+          id:
+            type: number
+          nom:
+            type: string
+          prix:
+            type: numeric
   parameters:
     pizzaId:
       name: pizzaId

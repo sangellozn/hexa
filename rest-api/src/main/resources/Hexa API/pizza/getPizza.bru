@@ -11,7 +11,7 @@ get {
 }
 
 params:path {
-  pizzaId: 
+  pizzaId: 3
 }
 
 example {
@@ -40,7 +40,13 @@ example {
     body: {
       type: json
       content: '''
-  
+        {
+          "id": 0,
+          "is_calzone": false,
+          "prix": "",
+          "ingredients": [],
+          "taille": ""
+        }
       '''
     }
   }

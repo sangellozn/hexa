@@ -4,6 +4,7 @@ import info.san.hexa.rest.api.PizzaApi;
 import info.san.hexa.rest.api.model.NouvellePizzaDTO;
 import info.san.hexa.rest.api.model.PizzaAltereeDTO;
 import info.san.hexa.rest.api.model.PizzaDTO;
+import info.san.hexa.rest.api.model.PizzaModifieeDTO;
 import info.san.hexa.rest.pizza.adaptaters.PizzaRestAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,7 @@ public class PizzaController implements PizzaApi {
     }
 
     @Override
-    public ResponseEntity<Void> updatePizza(Long pizzaId, PizzaDTO pizzaDTO) {
+    public ResponseEntity<Void> updatePizza(Long pizzaId, PizzaModifieeDTO pizzaDTO) {
         pizzaRestAdapter.updatePizza(pizzaId, pizzaDTO);
         return ResponseEntity.noContent().build();
     }

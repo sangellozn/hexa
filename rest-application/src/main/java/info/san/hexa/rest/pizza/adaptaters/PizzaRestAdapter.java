@@ -4,6 +4,7 @@ import info.san.hexa.domain.core.ports.in.IGestionPizza;
 import info.san.hexa.domain.core.ports.in.IRecuperationPizza;
 import info.san.hexa.rest.api.model.NouvellePizzaDTO;
 import info.san.hexa.rest.api.model.PizzaDTO;
+import info.san.hexa.rest.api.model.PizzaModifieeDTO;
 import info.san.hexa.rest.pizza.mappers.PizzaDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class PizzaRestAdapter {
 
     private final PizzaDtoMapper pizzaDtoMapper;
 
-    public void updatePizza(Long id, PizzaDTO pizzaDTO) {
+    public void updatePizza(Long id, PizzaModifieeDTO pizzaDTO) {
         gestionPizza.update(id, pizzaDtoMapper.mapToDomain(pizzaDTO));
     }
 

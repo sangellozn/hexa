@@ -1,6 +1,5 @@
 package info.san.hexa.domain.core.model.common;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

@@ -11,8 +11,8 @@ get {
 }
 
 params:query {
-  ~page: 
-  ~size: 
+  ~page: 0
+  ~size: 4
 }
 
 example {
@@ -42,7 +42,15 @@ example {
     body: {
       type: json
       content: '''
-        []
+        [
+          {
+            "id": 0,
+            "is_calzone": false,
+            "prix": "",
+            "ingredients": [],
+            "taille": ""
+          }
+        ]
       '''
     }
   }
